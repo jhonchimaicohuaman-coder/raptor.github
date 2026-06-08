@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Inventario Ampliado</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <aside class="form-section">
+            <div class="form-card">
+                <h2 id="form-title">Registrar Producto</h2>
+                <p class="form-subtitle">Completa la información técnica del producto.</p>
+                
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+
+                    <div class="input-group">
+                        <label for="product-name">Nombre del Producto</label>
+                        <input type="text" id="product-name" placeholder="Ej. Arroz Extra" required>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="product-category">Categoría</label>
+                            <select id="product-category" required>
+                                <option value="" disabled selected>Selecciona</option>
+                                <option value="Abarrotes">Abarrotes</option>
+                                <option value="Lácteos">Lácteos</option>
+                                <option value="Panadería">Panadería</option>
+                                <option value="Snacks">Snacks</option>
+                                <option value="Conservas">Conservas</option>
+                                <option value="Bebidas">Bebidas</option>
+                                <option value="Dulces">Dulces</option>
+                                <option value="Limpieza">Limpieza</option>
+                                <option value="Higiene">Higiene</option>
+                                <option value="Perecibles">Perecibles</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="product-quality">Calidad</label>
+                            <select id="product-quality" required>
+                                <option value="" disabled selected>Selecciona</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="product-content">Peso / Contenido</label>
+                            <input type="text" id="product-content" placeholder="Ej. 1 kg, 400 g, Pack" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="product-price">Precio (S/.)</label>
+                            <input type="number" id="product-price" step="0.01" placeholder="0.00" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="product-expiry">Fecha de Vencimiento</label>
+                        <input type="text" id="product-expiry" placeholder="Ej. 15/12/2027 o No aplica" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btn-submit" class="btn btn-primary">
+                            <span class="material-icons-round">save</span> Guardar Producto
+                        </button>
+                        <button type="button" id="btn-cancel" class="btn btn-secondary hidden">
+                            Cancelar Edición
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </aside>
+
+        <main class="table-section">
+            <header class="table-header">
+                <div>
+                    <h1>Catálogo Corporativo</h1>
+                    <p>Administración e historial de artículos en tiempo real.</p>
+                </div>
+                <div class="counter-card">
+                    <span class="material-icons-round">analytics</span>
+                    <div>
+                        <span class="count-number" id="total-products">0</span>
+                        <span class="count-label">Items Activos</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-container">
+                <table id="products-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Calidad</th>
+                            <th>Contenido</th>
+                            <th>Precio</th>
+                            <th>Vencimiento</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        </tbody>
+                </table>
+                <div id="empty-state" class="empty-state hidden">
+                    <span class="material-icons-round">layers_clear</span>
+                    <p>No hay registros en el inventario actual.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast">Operación exitosa</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
